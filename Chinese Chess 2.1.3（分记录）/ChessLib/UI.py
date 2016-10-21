@@ -47,7 +47,7 @@ class app:
                 road = e_.get()
                 if road[-4:-1]+road[-1] == '.che':
                     f = open(road,'r')
-                    f = split(f.read())
+                    #f = split(f.read())
                     for i in range(len(f)):
                         f[i] = int(f[i])
                     num = range(f[1])

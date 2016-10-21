@@ -9,4 +9,5 @@ try:
     from ChessLib.UI import display
     display()
 except ImportError:
-    print "The version of Tcl/Tk in use may be unstable.\n Visit http://www.python.org/downloads/ for current information."
+    print 'The version of Tcl/Tk in use may be unstable.\n' \
+          ' Visit http://www.python.org/downloads/ for current information.'
