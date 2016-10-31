@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from Tkinter import *
-import Startup
+import FreeMode
 import Board
 import Pieces
 import Record
+from InitChoice import InitChoice
 
 class app:
     def __init__(self, root):
@@ -145,14 +146,18 @@ class app:
             self.choose = not self.choose#再次点击该棋子取消选中
             self.choosed_chess.not_choose()
 
+
 def display():
+    _win = Tk()
+    initChoice = InitChoice(_win)
+    gameMode = initChoice.get_mode()
+
     root = Tk()
-    mode = input("input a game mode 1 or 2:\n")
-    if mode == 1:
+    if gameMode == 1:
         ChineseChess = app(root)
         ChineseChess.run()
-    elif mode == 2:
-        arbitaryChess = Startup.appArb(root)
+    elif gameMode == 2:
+        arbitaryChess = FreeMode.appArb(root)
         arbitaryChess.run()
 
 if __name__ == "__main__":
