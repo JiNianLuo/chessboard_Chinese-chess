@@ -21,8 +21,8 @@ class app:
         self.Board.canvas.bind('<Button-1>', self.move)
 
     def front_display(self):
-        a = self.Board.width
-        b = self.Board.height
+        a = self.Board._offset_x
+        b = self.Board._offset_y
         l = self.Board.l
         winTitle = u'\u4E2D\u56FD\u8C61\u68CB'
         self.root.title(winTitle)#中国象棋
@@ -79,8 +79,8 @@ class app:
         self.root.mainloop()
 
     def move(self, event):
-        a = self.Board.width
-        b = self.Board.height
+        a = self.Board._offset_x
+        b = self.Board._offset_y
         l = self.Board.l
         x = (event.x - a + l/2) / l#将像素坐标转化为棋盘坐标
         y = (event.y - b + l/2) / l

@@ -60,12 +60,12 @@ class BoardState:
 
 
 class Board:
-    def __init__(self, master, width, height, l):
-        self.width = width
-        self.height = height
+    def __init__(self, master, offset_x, offset_y, l):
+        self._offset_x = offset_x
+        self._offset_y = offset_y
         self.l = l
         self.master = master
-        self.canvas = Canvas(self.master, width=self.width * 2 + self.l * 8, height=self.height * 2 + self.l * 9,
+        self.canvas = Canvas(self.master, width=self._offset_x * 2 + self.l * 8, height=self._offset_y * 2 + self.l * 9,
                              bg='white')
         self.canvas.place(x=0, y=0)
         self.state = BoardState()
@@ -94,8 +94,8 @@ class Board:
         self.put_chess()
 
     def paint_board(self):
-        a = self.width
-        b = self.height
+        a = self._offset_x
+        b = self._offset_y
         l = self.l
         c = self.canvas
 
