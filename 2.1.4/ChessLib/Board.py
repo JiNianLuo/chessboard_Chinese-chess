@@ -155,8 +155,8 @@ class CHESS:  # 棋子属性
         self.canvas = canvas
         self.kind = kind
         self.name = name[kind]
-        self.a = master.width
-        self.b = master.height
+        self.a = master._offset_x
+        self.b = master._offset_y
         self.l = master.l
         self.r = 7 * self.l / 16
         self.x = self.y = -1
