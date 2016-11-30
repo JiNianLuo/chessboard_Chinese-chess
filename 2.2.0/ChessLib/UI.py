@@ -20,9 +20,8 @@ class app:
         self.front_display()
         self.Board.canvas.bind('<Button-1>', self.move)
         self.che_record = Record.CHE_Record(self.Board)
-
-        #test
-        #self.f = open("mousePos.txt", 'w')
+        self.log_record = Record.FEN_Record()
+        self.fen = ''
 
     def front_display(self):
         a = self.Board._offset_x
@@ -121,8 +120,6 @@ class app:
         l = self.Board.l
         x = (event.x - a + l/2) / l#将像素坐标转化为棋盘坐标
         y = (event.y - b + l/2) / l
-
-        #.write("windows coord: (%d, %d); screen coord: (%d, %d)\n" %(event.x, event.y, event.x_root, event.y_root))
 
         if x < 0 or y < 0 or x > 8 or y > 9:#点击位置超出棋盘，退出该函数
             return

@@ -87,6 +87,8 @@ class Board:
             (8, 6), (6, 6), (4, 6), (2, 6), (0, 6)  # 兵
         ]
         self.numbers = [1, 2, 2, 2, 2, 2, 5, 1, 2, 2, 2, 2, 2, 5]
+        self.counter = 0            #回合数
+        self.half_counter = 0    #半回合数
         self.display()
 
     def display(self):
