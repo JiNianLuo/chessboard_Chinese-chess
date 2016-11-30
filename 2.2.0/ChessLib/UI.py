@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from Tkinter import *
+from tkMessageBox import *
 import FreeMode
 import Board
 import Pieces
@@ -114,6 +115,19 @@ class app:
     def change_state(self, _board_coord):
         pass
 
+    def test_gameover(self):
+    	_king_cnt = 0# 结束判断
+    	for piece in self.Board.chess:
+    		if piece.x == -1 and piece.y == -1 and (piece.kind == 0 or piece.kind == 7):
+    			_king_cnt += 1
+    	if _king_cnt > 0:
+    		result = askyesno("游戏结束", "再开一局吗？")
+    		if result == True:
+    			self.root.destroy()
+    			display()
+    		else:
+    			self.root.destroy()
+    			
     def move(self, event):
         a = self.Board._offset_x
         b = self.Board._offset_y
@@ -155,6 +169,7 @@ class app:
                         self.Board.state[x, y] = [self.choosed_chess.No, self.choosed_chess.kind]
                         self.choose = not self.choose#移动后取消对该棋子的选中
                         self.xing_qi = not self.xing_qi
+                        self.test_gameover()
                         return
             if self.Board.state[x, y][1] == -1 and Pieces.right_move(self.Board, self.choosed_chess, x, y):#选中位置无棋子,并且符合走动规则
                 self.che_record.qi_pu(self.listbox, self.Board, self.choosed_chess,x,y)#棋谱编辑
